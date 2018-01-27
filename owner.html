@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Chameli Restaurent</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body background="background.jpg">
+
+<div style="color:white;"class="container">
+  <center><h2>View Report</h2></center>
+  <form action="/action_page.php">
+  From :
+  <input style="color:black;" type="date" name="from">
+  To   :
+  <input style="color:black;" type="date" name="to">
+  <input style="color:black;" type="submit">
+</form>
+  <div style="padding-top:2%;">
+    <div class="row">
+    <div class="col-sm-3" style="background-color:grey;">
+        <center><h2>System Sales</h2></center>
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Gross_Sales</th>
+        <th>Tax</th>
+        <th>Total</th>
+        <th>Difference</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>01/01/2018</td>
+        <td>1900.82</td>
+        <td>200.98</td>
+        <td>2001.80</td>
+        <td>100.00</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+    </div>
+<div class="col-sm-6" style="background-color:lightblue;">
+        <center><h2>Manual Sales</h2></center>
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Cash</th>
+        <th>Credit</th>
+        <th>Paid_Out</th>
+        <th>Uber</th>
+        <th>Postmates</th>
+        <th>Doordash</th>
+        <th>Grubhub</th>
+        <th>Eat24</th>
+        <th>DD2G</th>
+        <th>Others</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>01/01/2018</td>
+        <td>1900.82</td>
+        <td>200.98</td>
+        <td>2001.80</td>
+        <td>100.00</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+    </div>
+<div class="col-sm-3" style="background-color:orange;">
+        <center><h2>Total Tip</h2></center>
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Tasnim</th>
+        <th>Prajjwol</th>
+        <th>Srisak</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>01/01/2018</td>
+        <td>40.00</td>
+        <td>200.00</td>
+        <td>1.00</td>
+        <td>241.00</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+    </div>
+
+<center><div style="padding-top:10%;" id="piechart"></div></center>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([
+  ['Task', 'Hours per Day'],
+  ['option1', 8],
+  ['option2', 2],
+  ['option3', 4],
+  ['option4', 2],
+  ['option5', 8]
+]);
+
+  // Optional; add a title and set the width and height of the chart
+  var options = {'title':'My Average Day', 'width':550, 'height':400};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+}
+</script>
+</div>
+</body>
+</html>

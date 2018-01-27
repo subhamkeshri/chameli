@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Chameli Restaurent</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body background="background.jpg">
+
+<div style="color:white;"class="container">
+  <center><h2>Enter Today's Sale</h2></center>
+  <div class="row">
+    <form action="employee.php" method="post">
+    <div class="col-sm-5" background="background.jpg">
+        <center><h1>System Sales</h1></center>
+    <div class="form-group">
+      <label for="Gsales">Gross Sale :</label> <input type="number" class="form-control" id="Gsale">
+    </div>
+     <div class="form-group">
+      <label for="tax">Tax :</label> <input type="number" class="form-control" id="tax">
+    </div>
+     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Tip</button>
+
+  <!-- Modal -->
+  <div style="color:black;"class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Total Tip Today</h4>
+        </div>
+        <div class="modal-body">
+          <label for="ID">Name :</label> <input type="Text" class="form-control" id="Ttip">
+          <label for="tip">Tip :</label> <input type="number" class="form-control" id="Ptip">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+    </div>
+    <div class="col-sm-5" background="background.jpg">
+        <center><h1>Manual Sales</h1></center>
+    <div class="form-group">
+      <label for="cash">Cash :</label> <input type="number" class="form-control" id="cash">
+    </div>
+    <div class="form-group">
+      <label for="credit">Credit :</label> <input type="number" class="form-control" id="credit">
+    </div>
+    <div class="form-group">
+      <label for="Paid_Out">Paid Out :</label> <input type="number" class="form-control" id="paid_out">
+    </div>
+    <div class="form-group">
+      <label for="uber">Uber :</label> <input type="number" class="form-control" id="uber">
+    </div>
+    <div class="form-group">
+      <label for="postmates">Postmates :</label> <input type="number" class="form-control" id="postmates">
+    </div>
+    <div class="form-group">
+      <label for="doordash">Doordash :</label> <input type="number" class="form-control" id="doordash">
+    </div>
+    <div class="form-group">
+      <label for="grubhub">Grubhub :</label> <input type="number" class="form-control" id="grubhub">
+    </div>
+    <div class="form-group">
+      <label for="eat24">Eat24 :</label> <input type="number" class="form-control" id="eat24">
+    </div>
+    <div class="form-group">
+      <label for="dd2g">Desi Dine Togo:</label> <input type="number" class="form-control" id="dd2g">
+    </div>
+    </div>
+    <div class="col-sm-2" style="color:white">
+        
+        <center><button type="button" class="btn btn-primary" style="padding-left:30%;padding-right:30%;padding-top:15%;padding-bottom:15%;margin-top:20%;">Submit</button></center>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>
