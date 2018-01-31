@@ -2,7 +2,7 @@
 session_destroy();
 ?>
 <?php
-require 'db.php';
+// require 'db.php';
 session_start();
 $_SESSION["error"]="Success";
 $_SESSION["auth"]="false";
@@ -74,35 +74,35 @@ $_SESSION["auth"]="false";
 												<div class="row" stlye="margin-bottom:10%;">
 													<div class="col-sm-3" style="margin-top:2%;">
 														<center>
-															<a href="http://chamelisales.com/employee.php">
+															<a href="/employee.php">
 																<Button  style="font-size: 100%; width:100%;" class="btn btn-warning bt-lg">Daily Sales</Button>
 															</a>
 														</center>
 													</div>
                                                     <div class="col-sm-3" style="margin-top:2%; ">
 														<center>
-															<a href="http://chamelisales.com/catering.php">
+															<a href="/catering.php">
 																<Button  style="font-size: 100%; width:100%;" class="btn btn-warning bt-lg">Catering</Button>
 															</a>
 														</center>
 													</div>
                                                     <div class="col-sm-3" style="margin-top:2%;">
 														<center>
-															<a href="http://chamelisales.com/timing.php">
+															<a href="/timing.php">
 																<Button  style="font-size: 100%; width:100%;" class="btn btn-primary bt-lg">Time Clock</Button>
 															</a>
 														</center>
 													</div>
                                                     <div class="col-sm-3" style="margin-top:2%;">
 														<center>
-															<a href="http://chamelisales.com/update_info.php">
+															<a href="/update_info.php">
 																<Button  style="font-size: 100%; width:100%;" class="btn btn-danger bt-lg">Manager/Owner</Button>
 															</a>
 														</center>
 													</div>
 												</div>
 												<div align="right" style="margin-top:2%;" >
-													<a href="http://chamelisales.com/logout.php" >
+													<a href="/logout.php" >
 														<button style="font-size: 120%;" class="btn btn-danger">Logout</button>
 													</a>
 												</div>
