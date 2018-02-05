@@ -112,14 +112,25 @@ $_SESSION["num"]="5";
     echo " / ";
     echo "  To :  $to";    ?>
 
-<div class="container-fluid">
+<button onclick="myFunction()" class="btn btn-success bt-lg" style="font-size: 140%;">Show Graph</button>
+
+<div id="myDIV" class="container-fluid">
     <div class="col-sm-5" ><center><div id="piechart1" ></div></center>
   <center><div id="piechart2" ></div></center></div>
     <div class="col-sm-5" ><center><div id="piechart3" ></div></center>
   <center><div id="piechart4"></div></center></div>
   </div>
 </div>
-
+<script>
+function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
 <div>
         <center><h2>Total System Sales</h2></center>
   <div class="table-responsive">          
@@ -168,6 +179,7 @@ $_SESSION["num"]="5";
       </tr>
     </thead>
     <tbody>
+<center>
       <?php 
         $data = array();
         while($row2 = mysqli_fetch_array($result4)):;
@@ -201,6 +213,7 @@ $_SESSION["num"]="5";
                 $v12 = $row2[12];?></td>
             </tr>
             <?php endwhile;?>
+</center>
     </tbody>
   </table>
   </div>
