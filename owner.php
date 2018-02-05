@@ -20,18 +20,23 @@ $_SESSION["num"]="5";
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>    
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 </head>
 <body background="background.jpg" >
-<div align="right" style="margin-right:5%;">
-     <h1 style="color:white;"><?php
-        echo $_SESSION["auth"];
-        ?></h1>
+
+<div class="container-fluid">
+    <div class="col-sm-6" ><a href="/update_info.php">
+    <button style="font-size: 120%;" class="btn btn-danger">Home</button>
+  </a></div>
+    <div class="col-sm-6"  align="right">
     <a href="http://chamelisales.com/logout.php" ><button style="font-size: 120%;" class="btn btn-danger">Logout</button></a>
+    </div>
+  </div>
 </div>
-<a href="/update_info.php" class="btn btn-danger">
-          						<span class="glyphicon glyphicon-home"></span> Home
-        						</a>
+
+
 <div style="color:white;"class="container">
   <center><h2>View Report</h2></center>
   <div class="row" stlye="margin-bottom:10%;">
@@ -92,6 +97,7 @@ $_SESSION["num"]="5";
                         WHERE M.manual_id = I.daily_id
                         AND I.daily_date >= '$from'
                         AND I.daily_date <= '$to';";
+
 //      $sql2 = "CALL custom_manual_sales('$from','$to');";
                 
                 $result3 = mysqli_query($conn,$sql3);
@@ -101,6 +107,127 @@ $_SESSION["num"]="5";
       
     
     ?>
+    <?php
+    echo "From : $from  ";
+    echo " / ";
+    echo "  To :  $to";    ?>
+
+<div class="container-fluid">
+    <div class="col-sm-5" ><center><div id="piechart1" ></div></center>
+  <center><div id="piechart2" ></div></center></div>
+    <div class="col-sm-5" ><center><div id="piechart3" ></div></center>
+  <center><div id="piechart4"></div></center></div>
+  </div>
+</div>
+
+<div>
+        <center><h2>Total System Sales</h2></center>
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Gross_Sales</th>
+        <th>Tax</th>
+        <th>Total</th>
+        <th>Difference</th>
+      </tr>
+    </thead>
+    <tbody>
+            <?php while($row1 = mysqli_fetch_array($result3)):;?>
+            <tr>
+                <td><?php echo $row1[0];?></td>
+                <td><?php echo $row1[1];?></td>
+                <td><?php echo $row1[2];?></td>
+                <td><?php echo $row1[3];?></td>
+            </tr>
+            <?php endwhile;?>
+    </tbody>
+  </table>
+  </div>
+    </div>
+
+    <div>
+        <center><h2>Total Manual Sales</h2></center>
+  <div class="table-responsive" style="display: none;">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Cash</th>
+        <th>Credit</th>
+        <th>Paid_Out</th>
+        <th>Uber</th>
+        <th>Postmates</th>
+        <th>Doordash</th>
+        <th>Grubhub</th>
+        <th>Eat24</th>
+        <th>Peach</th>  
+        <th>DD2G</th>
+        <th>Others</th>
+        <th>Total</th>
+        <th>Total TIP</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php 
+        $data = array();
+        while($row2 = mysqli_fetch_array($result4)):;
+                $data[] = $row; ?>
+            <tr>
+                <td><?php echo $row2[0];
+                $v0 = $row2[0];?></td>
+                <td><?php echo $row2[1];
+                $v1 = $row2[1];?></td>
+                <td><?php echo $row2[2];
+                $v2 = $row2[2];?></td>
+                <td><?php echo $row2[3];
+                $v3 = $row2[3];?></td>
+                <td><?php echo $row2[4];
+                $v4 = $row2[4];?></td>
+                <td><?php echo $row2[5];
+                $v5 = $row2[5];?></td>
+                <td><?php echo $row2[6];
+                $v6 = $row2[6];?></td>
+                <td><?php echo $row2[7];
+                $v7 = $row2[7];?></td>
+                <td><?php echo $row2[8];
+                $v8 = $row2[8];?></td>
+                <td><?php echo $row2[9];
+                $v9 = $row2[9];?></td>
+                <td><?php echo $row2[10];
+                $v10 = $row2[10];?></td>
+                <td><?php echo $row2[11];
+                $v11 = $row2[11];?></td>
+                <td><?php echo $row2[12];
+                $v12 = $row2[12];?></td>
+            </tr>
+            <?php endwhile;?>
+    </tbody>
+  </table>
+  </div>
+    </div>
+   
+
+    <div class="container-fluid">
+    <div class="col-sm-12" >
+      <?php 
+          echo "CASH : $ $v0"."<br>";
+          echo "CREDIT : $ $v1"."<br>";
+          echo "PAID OUT : $ $v2"."<br>";
+          echo "UBER : $ $v3"."<br>";
+          echo "POSTMATES : $ $v4"."<br>";
+          echo "DOORDASH : $ $v5"."<br>";
+          echo "GRUBHUB : $ $v6"."<br>";
+          echo "EAT24 : $ $v7"."<br>";
+          echo "PEACH : $ $v8"."<br>";
+          echo "DESI DINE 2GO : $ $v9"."<br>";
+          echo "OTHERS : $ $v10"."<br>";
+          echo "TOTAL : $ $v11"."<br>";
+          echo "TOTAL TIP : $ $v12"."<br>"; 
+      ?>
+    </div>
+    
+  </div>
+</div>
   <div style="margin-top:5%;">
     <div style="background-color:#20B2AA;">
         <center><h2>System Sales</h2></center>
@@ -134,31 +261,7 @@ $_SESSION["num"]="5";
       
       
       
-      <div>
-        <center><h2>Total System Sales</h2></center>
-  <div class="table-responsive">          
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Gross_Sales</th>
-        <th>Tax</th>
-        <th>Total</th>
-        <th>Difference</th>
-      </tr>
-    </thead>
-    <tbody>
-            <?php while($row1 = mysqli_fetch_array($result3)):;?>
-            <tr>
-                <td><?php echo $row1[0];?></td>
-                <td><?php echo $row1[1];?></td>
-                <td><?php echo $row1[2];?></td>
-                <td><?php echo $row1[3];?></td>
-            </tr>
-            <?php endwhile;?>
-    </tbody>
-  </table>
-  </div>
-    </div>
+
       
       
       
@@ -166,7 +269,7 @@ $_SESSION["num"]="5";
       
       
       
-<div style="background-color:#006994;">
+<div style="background-color:#006994; color:#ffffff;">
         <center><h2>Manual Sales</h2></center>
   <div class="table-responsive">          
   <table class="table">
@@ -216,55 +319,96 @@ $_SESSION["num"]="5";
       
       
       
-      <div>
-        <center><h2>Total Manual Sales</h2></center>
-  <div class="table-responsive">          
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Cash</th>
-        <th>Credit</th>
-        <th>Paid_Out</th>
-        <th>Uber</th>
-        <th>Postmates</th>
-        <th>Doordash</th>
-        <th>Grubhub</th>
-        <th>Eat24</th>
-        <th>Peach</th>  
-        <th>DD2G</th>
-        <th>Others</th>
-        <th>Total</th>
-        <th>Total TIP</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php 
-        $data = array();
-        while($row2 = mysqli_fetch_array($result4)):;
-                $data[] = $row; ?>
-            <tr>
-                <td><?php echo $row2[0];?></td>
-                <td><?php echo $row2[1];?></td>
-                <td><?php echo $row2[2];?></td>
-                <td><?php echo $row2[3];?></td>
-                <td><?php echo $row2[4];?></td>
-                <td><?php echo $row2[5];?></td>
-                <td><?php echo $row2[6];?></td>
-                <td><?php echo $row2[7];?></td>
-                <td><?php echo $row2[8];?></td>
-                <td><?php echo $row2[9];?></td>
-                <td><?php echo $row2[10];?></td>
-                <td><?php echo $row2[11];?></td>
-                <td><?php echo $row2[12];?></td>
-            </tr>
-            <?php endwhile;?>
-    </tbody>
-  </table>
-  </div>
+      
     </div>
     </div>
     </div>
-    </div>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data1 = google.visualization.arrayToDataTable([
+          
+          ['Task', 'Hours per Day'],
+          ['Cash',     <?php echo $v0 ?>],
+          ['Credit',     <?php echo $v1 ?>]
+          
+        ]);
+
+        var options1 = {
+          title: '<?php
+   echo "        From : $from          ";
+   echo "        To :  $to            ";      ?>
+    CASH vs CREDIT'
+        };
+
+        var data2 = google.visualization.arrayToDataTable([
+          
+          ['Task', 'Hours per Day'],
+          ['Uber',     <?php echo $v3 ?>],
+          ['Postmates',     <?php echo $v4 ?>],
+          ['DoorDash',     <?php echo $v5 ?>],
+          ['Peach',     <?php echo $v8 ?>],
+          ['DD2G',     <?php echo $v9 ?>]
+          
+        ]);
+
+        var options2 = {
+          title: '<?php
+    echo "        From : $from          ";
+    echo "        To :  $to            ";    ?>
+    ONLINE FOOD PICKUP SERVICE'
+        };
+
+        var data3 = google.visualization.arrayToDataTable([
+          
+          ['Task', 'Hours per Day'],
+          ['PaidOut',     <?php echo $v2 ?>],
+          ['Others',     <?php echo $v10 ?>]
+          
+        ]);
+
+        var options3 = {
+          title: '<?php
+    echo "        From : $from          ";
+    echo "        To :  $to            ";    ?>
+    PaidOut vs Others.  Note: Prior to November 2017, "Others" include all the online orders'
+        };
+
+        var data4 = google.visualization.arrayToDataTable([
+          
+          ['Task', 'Hours per Day'],
+          ['Total Tip',     <?php echo $v12 ?>],
+          ['Total Sale',     <?php echo $v11 ?>]
+          
+        ]);
+
+        var options4 = {
+          title: '<?php
+    echo "        From : $from          ";
+    echo "        To :  $to            ";    ?>
+    Total Tip vs Total Sale'
+        };
+
+        var chart1 = new google.visualization.PieChart(document.getElementById('piechart1'));
+
+        chart1.draw(data1, options1);
+
+        var chart2 = new google.visualization.PieChart(document.getElementById('piechart2'));
+
+        chart2.draw(data2, options2);
+
+        var chart3 = new google.visualization.PieChart(document.getElementById('piechart3'));
+
+        chart3.draw(data3, options3);
+
+        var chart4= new google.visualization.PieChart(document.getElementById('piechart4'));
+
+        chart4.draw(data4, options4);
+      }
+    </script>  
+    
     <footer align="center" style="color:white;">
   <h4>Copyright © <?php echo date("Y"); ?> PentArray Inc. All rights reserved.</h4>
 </footer>
